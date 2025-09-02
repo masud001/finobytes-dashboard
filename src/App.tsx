@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider, useSelector, useDispatch } from 'react-redux';
+import { HelmetProvider } from 'react-helmet-async';
 import { store } from './store';
 import { setupAuthSync } from './utils/authSync';
 import { hydrateFromStorage, logout } from './store/slices/authSlice';
@@ -303,9 +304,11 @@ const AppRoutes = () => {
 
 function App() {
   return (
-    <Provider store={store}>
-      <AppRoutes />
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}>
+        <AppRoutes />
+      </Provider>
+    </HelmetProvider>
   );
 }
 

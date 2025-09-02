@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet-async';
 import type { RootState } from '../store';
 import HeroSection from '../components/HeroSection';
 import SectionHeader from '../components/SectionHeader';
@@ -93,8 +94,27 @@ const Home: React.FC = () => {
   ];
 
   return (
-    <main id="main-content" className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <>
+      <Helmet>
+        <title>Finobytes Dashboard - Role-Based Financial Management System</title>
+        <meta name="description" content="A comprehensive role-based dashboard for managing users, merchants, and member transactions. Secure authentication, purchase management, and real-time analytics for financial operations." />
+        <meta name="keywords" content="financial dashboard, role-based access, user management, merchant dashboard, member portal, purchase tracking, points system, real-time analytics" />
+        <link rel="canonical" href="https://finobytes-dashboard.netlify.app/" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Finobytes Dashboard - Role-Based Financial Management System" />
+        <meta property="og:description" content="A comprehensive role-based dashboard for managing users, merchants, and member transactions. Secure authentication, purchase management, and real-time analytics." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://finobytes-dashboard.netlify.app/" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Finobytes Dashboard - Role-Based Financial Management System" />
+        <meta name="twitter:description" content="A comprehensive role-based dashboard for managing users, merchants, and member transactions. Secure authentication, purchase management, and real-time analytics." />
+      </Helmet>
+      
+      <main id="main-content" className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <HeroSection
           title="Finobytes"
@@ -169,10 +189,73 @@ const Home: React.FC = () => {
                 </div>
               </div>
             </section>
+            
+            {/* Additional SEO Content */}
+            <section className="mt-20" aria-labelledby="about-heading">
+              <div className="text-center">
+                <h2 id="about-heading" className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                  About Finobytes Dashboard
+                </h2>
+                <div className="mt-8 max-w-4xl mx-auto">
+                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    <div className="text-left">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">Secure Role-Based Access</h3>
+                      <p className="text-gray-600">
+                        Our dashboard provides three distinct user roles: Admin for system management, 
+                        Merchant for store operations, and Member for personal account management. 
+                        Each role has specific permissions and access levels to ensure data security.
+                      </p>
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">Real-Time Analytics</h3>
+                      <p className="text-gray-600">
+                        Track purchases, manage points, and monitor business performance with 
+                        interactive charts and real-time data updates. Get insights into 
+                        customer behavior and merchant performance.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            
+            {/* Benefits Section */}
+            <section className="mt-20" aria-labelledby="benefits-heading">
+              <div className="text-center">
+                <h2 id="benefits-heading" className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                  Why Choose Finobytes Dashboard?
+                </h2>
+                <div className="mt-8 max-w-4xl mx-auto">
+                  <ul className="text-left space-y-4 text-gray-600">
+                    <li className="flex items-start">
+                      <span className="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">✓</span>
+                      <span><strong>Secure Authentication:</strong> Multi-factor authentication with role-based access control</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">✓</span>
+                      <span><strong>Real-Time Updates:</strong> Live data synchronization across all user interfaces</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">✓</span>
+                      <span><strong>Responsive Design:</strong> Optimized for desktop, tablet, and mobile devices</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">✓</span>
+                      <span><strong>Interactive Analytics:</strong> Comprehensive charts and data visualization tools</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">✓</span>
+                      <span><strong>Points Management:</strong> Automated loyalty points system with purchase tracking</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
           </div>
         </section>
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 };
 
