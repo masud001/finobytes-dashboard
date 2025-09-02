@@ -2,6 +2,11 @@
 
 A comprehensive financial dashboard application with role-based access control for administrators, merchants, and members.
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=flat-square&logo=github)](https://github.com/masud001/finobytes-dashboard)
+[![TypeScript](https://img.shields.io/badge/TypeScript-99.5%25-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.1.1-blue?style=flat-square&logo=react)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.1.2-purple?style=flat-square&logo=vite)](https://vitejs.dev/)
+
 ## 🚀 Performance Optimizations
 
 ### Code Splitting & Bundle Optimization
@@ -162,7 +167,7 @@ The build process creates optimized chunks:
 ### Installation
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/masud001/finobytes-dashboard.git
 cd finobytes-dashboard
 
 # Install dependencies
@@ -313,9 +318,15 @@ The application uses the following localStorage keys for data persistence:
 ## 🤝 Support
 
 For support and questions:
-- **Issues**: Create an issue in the repository
+- **Issues**: Create an issue in the [repository](https://github.com/masud001/finobytes-dashboard/issues)
 - **Documentation**: Check the inline code documentation
 - **Community**: Join our developer community
+
+## 📁 Repository
+
+- **GitHub**: [https://github.com/masud001/finobytes-dashboard](https://github.com/masud001/finobytes-dashboard)
+- **Languages**: TypeScript (99.5%), Other (0.5%)
+- **License**: MIT License
 
 ---
 
