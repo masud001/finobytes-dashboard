@@ -1345,7 +1345,7 @@ const Auth: React.FC = () => {
                   ? 'bg-green-50 border-green-200'
                   : 'bg-purple-50 border-purple-200'
               }`}>
-                <h4 className={`text-sm font-semibold mb-2 ${
+                <h2 className={`text-sm font-semibold mb-2 ${
                   selectedRole === 'admin' 
                     ? 'text-blue-500'
                     : selectedRole === 'merchant'
@@ -1356,7 +1356,7 @@ const Auth: React.FC = () => {
                     ? `Demo Credentials (${memberForm.loginMethod === 'email' ? 'Email + Password' : 'Phone + OTP'}):`
                     : 'Demo Credentials:'
                   }
-                </h4>
+                </h2>
                 <div className={`text-xs space-y-1 ${
                   selectedRole === 'admin' 
                     ? 'text-blue-500'
