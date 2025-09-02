@@ -3,6 +3,7 @@
 A comprehensive financial dashboard application with role-based access control for administrators, merchants, and members.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=flat-square&logo=github)](https://github.com/masud001/finobytes-dashboard)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Netlify-green?style=flat-square&logo=netlify)](https://finobytes-dashboard.netlify.app/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-99.5%25-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.1.1-blue?style=flat-square&logo=react)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-7.1.2-purple?style=flat-square&logo=vite)](https://vitejs.dev/)
@@ -177,6 +178,8 @@ cd finobytes-dashboard
 npm install
 
 # Start development server
+npm start
+# OR
 npm run dev
 
 # Build for production
@@ -327,9 +330,39 @@ For support and questions:
 - **Documentation**: Check the inline code documentation
 - **Community**: Join our developer community
 
-## 📁 Repository
+## 🚀 Deployment
+
+### 🌐 Live Application
+**Live Demo**: [https://finobytes-dashboard.netlify.app/](https://finobytes-dashboard.netlify.app/)
+
+The application is currently deployed on Netlify and fully functional with all features working.
+
+### Netlify (Current Deployment)
+The project is deployed on Netlify with the following configuration:
+- **Live URL**: [https://finobytes-dashboard.netlify.app/](https://finobytes-dashboard.netlify.app/)
+- **Build Command**: `npm run build`
+- **Publish Directory**: `dist`
+- **Environment**: `NPM_CONFIG_LEGACY_PEER_DEPS = "true"`
+- **Configuration**: Uses `netlify.toml` for optimal settings
+
+### Vercel (Alternative)
+1. **Connect to Vercel**:
+   - Go to [Vercel](https://vercel.com)
+   - Import your GitHub repository: `masud001/finobytes-dashboard`
+   - Vercel will auto-detect the build settings from `vercel.json`
+
+2. **Build Settings** (auto-detected):
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Install Command**: `npm install --legacy-peer-deps`
+   - **Environment**: `NPM_CONFIG_LEGACY_PEER_DEPS = "true"`
+
+3. **Live URL**: Your app will be available at `https://[your-project-name].vercel.app`
+
+## 📁 Repository & Links
 
 - **GitHub**: [https://github.com/masud001/finobytes-dashboard](https://github.com/masud001/finobytes-dashboard)
+- **Live Demo**: [https://finobytes-dashboard.netlify.app/](https://finobytes-dashboard.netlify.app/)
 - **Languages**: TypeScript (99.5%), Other (0.5%)
 - **License**: MIT License
 
