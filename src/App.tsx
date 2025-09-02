@@ -25,10 +25,11 @@ const DashboardMember = React.lazy(() => import('./pages/DashboardMember'));
 
 // Loading component for Suspense fallback
 const PageLoader = () => (
-  <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+  <div className="min-h-screen bg-gray-50 flex items-center justify-center" role="status" aria-live="polite">
     <div className="text-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-      <p className="mt-4 text-gray-600">Loading...</p>
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto" aria-hidden="true"></div>
+      <p className="mt-4 text-gray-600">Loading page...</p>
+      <span className="sr-only">Please wait while the page loads</span>
     </div>
   </div>
 );
@@ -245,6 +246,14 @@ const AppRoutes = () => {
   return (
     <Router>
       <div className="App">
+        {/* Skip Navigation Link for Accessibility */}
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
+        
         <React.Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />

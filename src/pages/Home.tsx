@@ -27,8 +27,9 @@ const Home: React.FC = () => {
   // Show loading while checking authentication
   if (!isInitialized) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
+      <div className="flex items-center justify-center min-h-screen" role="status" aria-live="polite">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600" aria-hidden="true"></div>
+        <span className="sr-only">Loading authentication status...</span>
       </div>
     );
   }
@@ -92,7 +93,7 @@ const Home: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <main id="main-content" className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <HeroSection
@@ -102,17 +103,27 @@ const Home: React.FC = () => {
         />
 
         {/* Get Started Section */}
-        <div className="mt-16">
+        <section className="mt-16" aria-labelledby="get-started-heading">
+          <h2 id="get-started-heading" className="sr-only">Get Started with Finobytes Dashboard</h2>
           
           <div className="mt-12">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" role="list" aria-label="Available user roles">
               {roleCards.map((card, index) => (
-                <div
+                <article
                   key={index}
-                  className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                  className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl transition-all duration-300 cursor-pointer group focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2"
                   onClick={() => navigate(card.route)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      navigate(card.route);
+                    }
+                  }}
+                  tabIndex={0}
+                  role="listitem"
+                  aria-label={`${card.title}: ${card.description}`}
                 >
-                  <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-${card.colorScheme}-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-${card.colorScheme}-100 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`} aria-hidden="true">
                     <div className={`w-8 h-8 text-${card.colorScheme}-600`}>
                       {card.icon}
                     </div>
@@ -127,39 +138,41 @@ const Home: React.FC = () => {
                   </p>
                   
                   <button
-                    className={`w-full py-3 px-6 bg-${card.colorScheme}-600 hover:bg-${card.colorScheme}-700 text-white font-medium rounded-lg transition-colors duration-200 group-hover:shadow-lg`}
+                    className={`w-full py-3 px-6 bg-${card.colorScheme}-600 hover:bg-${card.colorScheme}-700 focus:bg-${card.colorScheme}-700 text-white font-medium rounded-lg transition-colors duration-200 group-hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-${card.colorScheme}-500 focus:ring-offset-2`}
+                    aria-label={`Get started with ${card.title}`}
                   >
                     Get Started
                   </button>
-                </div>
+                </article>
               ))}
             </div>
             
             {/* Features Section */}
-            <div className="mt-20">
+            <section className="mt-20" aria-labelledby="features-heading">
               <SectionHeader
                 title="Features"
                 description="Everything you need to manage your business operations"
               />
 
               <div className="mt-16">
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4" role="list" aria-label="Dashboard features">
                   {features.map((feature, index) => (
-                    <FeatureCard
-                      key={index}
-                      icon={feature.icon}
-                      title={feature.title}
-                      description={feature.description}
-                      colorScheme={feature.colorScheme}
-                    />
+                    <div key={index} role="listitem">
+                      <FeatureCard
+                        icon={feature.icon}
+                        title={feature.title}
+                        description={feature.description}
+                        colorScheme={feature.colorScheme}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 };
 

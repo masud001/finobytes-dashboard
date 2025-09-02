@@ -33,15 +33,15 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   const { iconBg, iconColor } = colorClasses[colorScheme];
 
   return (
-    <div className="text-center">
-      <div className={`mx-auto h-12 w-12 ${iconBg} rounded-lg flex items-center justify-center`}>
+    <article className="text-center">
+      <div className={`mx-auto h-12 w-12 ${iconBg} rounded-lg flex items-center justify-center`} aria-hidden="true">
         <div className={`h-6 w-6 ${iconColor}`}>
           {icon}
         </div>
       </div>
       <h3 className="mt-4 text-lg font-medium text-gray-900">{title}</h3>
       <p className="mt-2 text-sm text-gray-500">{description}</p>
-    </div>
+    </article>
   );
 };
 
