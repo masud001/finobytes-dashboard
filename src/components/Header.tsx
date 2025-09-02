@@ -37,9 +37,9 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <h1 className="text-xl font-semibold text-gray-900">
+            <div className="text-xl font-semibold text-gray-900">
               Finobytes
-            </h1>
+            </div>
             <span className="ml-4 px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded-full">
               {role.charAt(0).toUpperCase() + role.slice(1)}
             </span>
