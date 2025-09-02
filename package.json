@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "vite"
+    "start": "vite",
+    "install:ci": "npm install --legacy-peer-deps"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
