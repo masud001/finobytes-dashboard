@@ -15,21 +15,21 @@ The application implements advanced code splitting strategies to optimize perfor
 
 #### **Lazy Loading**
 - **Page Components**: All dashboard and login pages are lazy-loaded using `React.lazy()`
-- **Charts**: Chart components are loaded only when needed
+- **Charts**: Chart components are loaded only when needed using Chart.js and react-chartjs-2
 - **Route-based Splitting**: Each route loads its dependencies independently
 
 #### **Bundle Chunking**
-The build process creates optimized chunks:
+The build process creates optimized chunks through Vite's manual chunk configuration:
 
-- **`react-vendor`** (11.84 kB): React core libraries
-- **`router-vendor`** (34.55 kB): React Router
-- **`redux-vendor`** (29.56 kB): Redux Toolkit
-- **`charts-vendor`** (332.71 kB): Recharts library
-- **`auth`** (6.75 kB): Authentication utilities
-- **`dashboard`** (25.12 kB): Dashboard components
-- **`login`** (18.01 kB): Login forms
-- **`components`** (10.61 kB): Reusable UI components
-- **`charts`** (4.29 kB): Chart components
+- **`react-vendor`**: React core libraries (React 19.1.1)
+- **`router-vendor`**: React Router v7.8.2
+- **`redux-vendor`**: Redux Toolkit v2.8.2
+- **`charts-vendor`**: Chart.js v4.5.0 and react-chartjs-2 v5.3.0
+- **`auth`**: Authentication utilities and services
+- **`dashboard`**: Dashboard components and pages
+- **`login`**: Login forms and authentication UI
+- **`components`**: Reusable UI components
+- **`charts`**: Chart components and responsive layouts
 
 #### **Performance Benefits**
 - **Initial Load**: Only essential code loads first
@@ -45,17 +45,19 @@ The build process creates optimized chunks:
 ## 🏗️ Architecture
 
 ### Core Technologies
-- **React 18** with TypeScript
-- **Redux Toolkit** for state management
-- **React Router** for navigation
-- **Tailwind CSS** for styling
-- **Recharts** for data visualization
+- **React 19.1.1** with TypeScript 5.8.3
+- **Redux Toolkit 2.8.2** for state management
+- **React Router 7.8.2** for navigation
+- **Tailwind CSS 4.1.12** for styling
+- **Chart.js 4.5.0** with react-chartjs-2 5.3.0 for data visualization
+- **Vite 7.1.2** for build tooling and development server
 
 ### Component Structure
-- **Reusable Components**: FormInput, FormButton, DataTable, ActionButton
-- **Layout Components**: Layout, SystemStats, Charts
-- **Page Components**: Home, Login forms, Dashboards
+- **Reusable Components**: FormInput, FormButton, DataTable, ActionButton, Loader, NotificationCard
+- **Layout Components**: Layout, Header, SystemStats, ResponsiveCharts
+- **Page Components**: Home, Auth (unified login/register), DashboardAdmin, DashboardMerchant, DashboardMember
 - **Utility Hooks**: useForm, useTokenExpiry
+- **Authentication Components**: ProtectedRoute, LoginCard
 
 ## 🔐 Authentication System
 
@@ -65,21 +67,22 @@ The build process creates optimized chunks:
 - **Member**: Personal dashboard and purchase history
 
 ### Authentication Features
-- **Login & Registration**: Separate pages for each role
+- **Unified Auth Component**: Single component handles all roles and authentication methods
 - **Admin Registration**: Email + Password + Admin Code (ADMIN2024)
-- **Merchant Registration**: Store Details + Password
-- **Member Registration**: Phone/Email + Password
-- **OTP Simulation**: Member login with phone verification
-- **Token-based Authentication**: JWT-style tokens with expiration
+- **Merchant Registration**: Store Details (Store Name, Owner) + Email + Password
+- **Member Registration**: Phone/Email + Password with dual login methods
+- **OTP Simulation**: Member login with phone verification (demo OTP: 123456)
+- **Token-based Authentication**: Role-prefixed fake tokens with 24-hour expiration
 - **Cross-tab Synchronization**: Consistent auth state across browser tabs
 - **Route Protection**: Automatic redirection for unauthorized access
 - **Session Persistence**: Login state maintained across page refreshes
+- **Real-time Validation**: Form validation with field-specific error handling
 
 ### Registration Requirements
-- **Admin**: Full name, email, password, admin registration code
-- **Merchant**: Store name, owner name, email, phone, address, password
-- **Member**: Full name, email, phone, password
-- **Validation**: Email format, password strength, required fields, phone format (Bangladesh)
+- **Admin**: Email, password, admin registration code (ADMIN2024)
+- **Merchant**: Store name, owner name, email, password
+- **Member**: Full name, email, phone number, password
+- **Validation**: Email format, password strength, required fields, phone format (Bangladesh), uniqueness checks
 
 ## 📊 Dashboard Features
 
@@ -98,23 +101,21 @@ The build process creates optimized chunks:
 - **Live Customer Data**: Access to all registered member information
 
 ### Member Dashboard
-- **Purchase History**: View all transactions and points
-- **Personal Statistics**: Individual performance metrics
-- **Point Tracking**: Monitor earned and spent points
+- **Purchase History**: View all transactions with store names and approval status
+- **Personal Statistics**: Individual performance metrics and point tracking
+- **Point Tracking**: Monitor earned and spent points (1 point per $10 spent)
 - **Real-time Updates**: Data updates immediately after registration
-
-### Member Dashboard
-- **Purchase History**: View all transactions and points
-- **Personal Statistics**: Individual performance metrics
-- **Point Tracking**: Monitor earned and spent points
+- **Interactive Charts**: Responsive charts showing spending patterns and trends
 
 ## 🎨 UI/UX Features
 
 ### Design System
 - **Consistent Typography**: Unified font hierarchy and spacing
-- **Theme-based Colors**: Role-specific color schemes
+- **Theme-based Colors**: Role-specific color schemes (Blue for Admin, Green for Merchant, Purple for Member)
 - **Responsive Design**: Mobile-first approach with breakpoint optimization
-- **Interactive Elements**: Hover effects, loading states, and animations
+- **Interactive Elements**: Hover effects, loading states, and smooth animations
+- **Form Components**: Theme-aware FormInput and FormButton components
+- **Data Visualization**: Responsive charts that adapt to screen size
 
 ## 💾 Data Management System
 
@@ -138,10 +139,12 @@ The build process creates optimized chunks:
 - **Notifications**: System alerts and updates
 
 ### Component Library
-- **Form Components**: Validated inputs with error handling
-- **Data Tables**: Sortable, searchable, and paginated tables
-- **Charts**: Multiple chart types with responsive layouts
-- **Action Buttons**: Consistent button styles with variants
+- **Form Components**: FormInput, FormButton with theme-aware styling and validation
+- **Data Tables**: DataTable with sorting, searching, and pagination
+- **Charts**: ResponsiveBarChart, ResponsiveLineChart, ResponsiveDoughnutChart, ResponsiveAreaChart
+- **Action Buttons**: ActionButton with multiple variants (primary, secondary, danger, success, warning)
+- **Notification System**: NotificationCard and NotificationList for system alerts
+- **Layout Components**: Header, Layout, SystemStats for consistent page structure
 
 ## 🚀 Getting Started
 
@@ -253,23 +256,25 @@ VITE_ENV=production
    - Should redirect to `/dashboard/member`
 
 #### Demo Credentials
-- **Admin**: admin@finobytes.com / admin123
+- **Admin**: admin@finobytes.com / admin123 / Code: ADMIN2024
 - **Merchant**: mizan@shopone.com / shopone123
-- **Member**: Phone: 01710000001 / OTP: 123456
+- **Member**: 
+  - Email: alice@example.com / alice123
+  - Phone: +8801710000001 / OTP: 123456
 
 ### Available Scripts
 ```bash
-# Run tests
-npm test
+# Development
+npm run dev          # Start development server
+npm start           # Start development server (alias)
 
-# Run tests in watch mode
-npm run test:watch
+# Build
+npm run build       # Build for production
+npm run preview     # Preview production build
 
-# Generate coverage report
-npm run test:coverage
-
-# Type checking
-npm run type-check
+# Code Quality
+npm run lint        # Run ESLint
+npm run type-check  # TypeScript type checking
 ```
 
 ## 📝 Contributing
