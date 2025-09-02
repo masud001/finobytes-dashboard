@@ -2,20 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 import Layout from '../components/Layout';
-import SystemStats from '../components/SystemStats';
-import DataTable from '../components/DataTable';
 import ActionButton from '../components/ActionButton';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import { getUsers } from '../utils/dataManager';
+import { LazySystemStats, LazyDataTable, LazyNotificationList } from '../components/LazyComponents';
 import {
-  ResponsiveBarChart,
-  ResponsiveLineChart,
-  ResponsiveDoughnutChart,
-  ResponsiveChartGrid,
-  ChartContainer,
-} from '../components/ResponsiveCharts';
-import NotificationList from '../components/NotificationList';
+  LazyResponsiveBarChart,
+  LazyResponsiveLineChart,
+  LazyResponsiveDoughnutChart,
+  LazyResponsiveChartGrid,
+  LazyChartContainer,
+} from '../components/LazyCharts';
 
 const DashboardMerchant: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -426,7 +424,7 @@ const DashboardMerchant: React.FC = () => {
         </div>
 
         {/* System Stats */}
-        <SystemStats stats={merchantStats} />
+        <LazySystemStats stats={merchantStats} />
 
         {/* Quick Actions Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -569,36 +567,36 @@ const DashboardMerchant: React.FC = () => {
           </h2>
           
           {/* First Row - 3 charts */}
-          <ResponsiveChartGrid className="lg:grid-cols-3">
-            <ChartContainer>
-              <ResponsiveBarChart
+          <LazyResponsiveChartGrid className="lg:grid-cols-3">
+            <LazyChartContainer>
+              <LazyResponsiveBarChart
                 data={purchaseAmountsData}
                 title="Purchase Amounts by Customer"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveDoughnutChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveDoughnutChart
                 data={purchaseStatusData}
                 title="Purchase Status Distribution"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveLineChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveLineChart
                 data={monthlyTrendsData}
                 title="Monthly Purchase Trends"
               />
-            </ChartContainer>
-          </ResponsiveChartGrid>
+            </LazyChartContainer>
+          </LazyResponsiveChartGrid>
 
           {/* Second Row - 1 chart */}
-          <ResponsiveChartGrid className="lg:grid-cols-1">
-            <ChartContainer>
-              <ResponsiveBarChart
+          <LazyResponsiveChartGrid className="lg:grid-cols-1">
+            <LazyChartContainer>
+              <LazyResponsiveBarChart
                 data={customerPointsData}
                 title="Customer Points Overview"
               />
-            </ChartContainer>
-          </ResponsiveChartGrid>
+            </LazyChartContainer>
+          </LazyResponsiveChartGrid>
         </div>
 
         {/* Data Tables Section */}
@@ -610,7 +608,7 @@ const DashboardMerchant: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Purchases</h3>
-              <DataTable
+              <LazyDataTable
                 data={purchasesWithActions}
                 columns={purchasesColumns}
                 searchable={true}
@@ -622,7 +620,7 @@ const DashboardMerchant: React.FC = () => {
             
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Customer Database</h3>
-              <DataTable
+              <LazyDataTable
                 data={customersWithActions}
                 columns={customersColumns}
                 searchable={true}
@@ -636,10 +634,10 @@ const DashboardMerchant: React.FC = () => {
           {/* Notifications Section */}
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Notifications</h3>
-                        <NotificationList
+                        <LazyNotificationList
               notifications={notificationsData}
-              onView={(id) => console.log('View notification:', id)}
-              onMarkRead={(id) => console.log('Mark as read:', id)}
+              onView={(id: string) => console.log('View notification:', id)}
+              onMarkRead={(id: string) => console.log('Mark as read:', id)}
               showActions={true}
               emptyMessage="No notifications"
               emptyDescription="You're all caught up!"

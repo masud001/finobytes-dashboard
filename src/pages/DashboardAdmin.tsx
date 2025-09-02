@@ -2,19 +2,18 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from '../store';
 import Layout from '../components/Layout';
-import SystemStats from '../components/SystemStats';
-import DataTable from '../components/DataTable';
 import ActionButton from '../components/ActionButton';
 import { DataManager } from '../utils/dataManager';
 import { forceSyncFromLocalStorage, forceSyncToLocalStorage } from '../store/slices/dataSlice';
+import { LazySystemStats, LazyDataTable } from '../components/LazyComponents';
 import {
-  ResponsiveBarChart,
-  ResponsiveLineChart,
-  ResponsiveDoughnutChart,
-  ResponsiveAreaChart,
-  ResponsiveChartGrid,
-  ChartContainer,
-} from '../components/ResponsiveCharts';
+  LazyResponsiveBarChart,
+  LazyResponsiveLineChart,
+  LazyResponsiveDoughnutChart,
+  LazyResponsiveAreaChart,
+  LazyResponsiveChartGrid,
+  LazyChartContainer,
+} from '../components/LazyCharts';
 
 // Custom hook for real-time data synchronization
 const useRealTimeDataSync = () => {
@@ -528,7 +527,7 @@ const DashboardAdmin: React.FC = () => {
         </div>
 
         {/* System Stats */}
-        <SystemStats stats={adminStats} />
+        <LazySystemStats stats={adminStats} />
 
         {/* Charts Section */}
         <div className="space-y-6">
@@ -537,58 +536,58 @@ const DashboardAdmin: React.FC = () => {
           </h2>
           
           {/* First Row - 3 charts */}
-          <ResponsiveChartGrid className="lg:grid-cols-3">
-            <ChartContainer>
-              <ResponsiveBarChart
+          <LazyResponsiveChartGrid className="lg:grid-cols-3">
+            <LazyChartContainer>
+              <LazyResponsiveBarChart
                 data={userPointsData}
                 title="User Points Distribution"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveDoughnutChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveDoughnutChart
                 data={purchaseStatusData}
                 title="Purchase Status Overview"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveLineChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveLineChart
                 data={monthlyActivityData}
                 title="Monthly Activity Trends"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveBarChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveBarChart
                 data={purchaseAmountsData}
                 title="Purchase Amounts by User"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveBarChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveBarChart
                 data={monthlyUsersData}
                 title="Monthly Active Users"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveBarChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveBarChart
                 data={monthlyMerchantsData}
                 title="Monthly Active Merchants"
               />
-            </ChartContainer>
+            </LazyChartContainer>
 
-            <ChartContainer>
-              <ResponsiveDoughnutChart
+            <LazyChartContainer>
+              <LazyResponsiveDoughnutChart
                 data={notificationTypesData}
                 title="Notification Types"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveAreaChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveAreaChart
                 data={userGrowthData}
                 title="User Growth Trend"
               />
-            </ChartContainer>
+            </LazyChartContainer>
 
-          </ResponsiveChartGrid>
+          </LazyResponsiveChartGrid>
         </div>
 
         {/* Data Tables Section */}
@@ -611,7 +610,7 @@ const DashboardAdmin: React.FC = () => {
                   Add User
                 </button>
               </h3>
-              <DataTable
+              <LazyDataTable
                 data={usersWithActions}
                 columns={usersColumns}
                 searchable={true}
@@ -634,7 +633,7 @@ const DashboardAdmin: React.FC = () => {
                   Add Merchant
                 </button>
               </h3>
-              <DataTable
+              <LazyDataTable
                 data={merchantsWithActions}
                 columns={merchantsColumns}
                 searchable={true}

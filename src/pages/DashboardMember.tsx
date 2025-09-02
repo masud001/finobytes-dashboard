@@ -2,16 +2,15 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../store';
 import Layout from '../components/Layout';
-import SystemStats from '../components/SystemStats';
-import DataTable from '../components/DataTable';
 import ActionButton from '../components/ActionButton';
+import { LazySystemStats, LazyDataTable } from '../components/LazyComponents';
 import {
-  ResponsiveBarChart,
-  ResponsiveLineChart,
-  ResponsiveDoughnutChart,
-  ResponsiveChartGrid,
-  ChartContainer,
-} from '../components/ResponsiveCharts';
+  LazyResponsiveBarChart,
+  LazyResponsiveLineChart,
+  LazyResponsiveDoughnutChart,
+  LazyResponsiveChartGrid,
+  LazyChartContainer,
+} from '../components/LazyCharts';
 
 const DashboardMember: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -224,7 +223,7 @@ const DashboardMember: React.FC = () => {
         </div>
 
         {/* System Stats */}
-        <SystemStats stats={memberStats} />
+        <LazySystemStats stats={memberStats} />
 
         {/* Charts Section */}
         <div className="space-y-6">
@@ -233,32 +232,32 @@ const DashboardMember: React.FC = () => {
           </h2>
           
           {/* First Row - 2 charts */}
-          <ResponsiveChartGrid className="lg:grid-cols-3">
-            <ChartContainer>
-              <ResponsiveBarChart
+          <LazyResponsiveChartGrid className="lg:grid-cols-3">
+            <LazyChartContainer>
+              <LazyResponsiveBarChart
                 data={monthlySpendingData}
                 title="Monthly Spending Overview"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveDoughnutChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveDoughnutChart
                 data={purchaseCategoriesData}
                 title="Spending by Category"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveLineChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveLineChart
                 data={pointsEarnedData}
                 title="Points Earned Over Time"
               />
-            </ChartContainer>
-            <ChartContainer>
-              <ResponsiveBarChart
+            </LazyChartContainer>
+            <LazyChartContainer>
+              <LazyResponsiveBarChart
                 data={merchantSpendingData}
                 title="Spending by Merchant"
               />
-            </ChartContainer>
-          </ResponsiveChartGrid>
+            </LazyChartContainer>
+          </LazyResponsiveChartGrid>
 
         </div>
 
@@ -269,7 +268,7 @@ const DashboardMember: React.FC = () => {
           </h2>
           
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <DataTable
+            <LazyDataTable
               data={purchasesWithActions}
               columns={columns}
               searchable={true}

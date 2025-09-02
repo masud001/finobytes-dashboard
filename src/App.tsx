@@ -24,13 +24,34 @@ const DashboardAdmin = React.lazy(() => import('./pages/DashboardAdmin'));
 const DashboardMerchant = React.lazy(() => import('./pages/DashboardMerchant'));
 const DashboardMember = React.lazy(() => import('./pages/DashboardMember'));
 
-// Loading component for Suspense fallback
+// Optimized loading components for different scenarios
 const PageLoader = () => (
   <div className="min-h-screen bg-gray-50 flex items-center justify-center" role="status" aria-live="polite">
     <div className="text-center">
       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto" aria-hidden="true"></div>
       <p className="mt-4 text-gray-600">Loading page...</p>
       <span className="sr-only">Please wait while the page loads</span>
+    </div>
+  </div>
+);
+
+const DashboardLoader = () => (
+  <div className="min-h-screen bg-gray-50 flex items-center justify-center" role="status" aria-live="polite">
+    <div className="text-center">
+      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto" aria-hidden="true"></div>
+      <p className="mt-4 text-lg text-gray-600">Loading dashboard...</p>
+      <p className="mt-2 text-sm text-gray-500">Preparing your personalized experience</p>
+      <span className="sr-only">Please wait while the dashboard loads</span>
+    </div>
+  </div>
+);
+
+const AuthLoader = () => (
+  <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center" role="status" aria-live="polite">
+    <div className="text-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto" aria-hidden="true"></div>
+      <p className="mt-4 text-gray-600">Loading authentication...</p>
+      <span className="sr-only">Please wait while authentication loads</span>
     </div>
   </div>
 );
@@ -260,21 +281,65 @@ const AppRoutes = () => {
             <Route path="/" element={<Home />} />
             
             {/* Login Routes - All handled by unified Auth component */}
-            <Route path="/login/admin" element={<Auth />} />
-            <Route path="/login/merchant" element={<Auth />} />
-            <Route path="/login/member" element={<Auth />} />
+            <Route 
+              path="/login/admin" 
+              element={
+                <React.Suspense fallback={<AuthLoader />}>
+                  <Auth />
+                </React.Suspense>
+              } 
+            />
+            <Route 
+              path="/login/merchant" 
+              element={
+                <React.Suspense fallback={<AuthLoader />}>
+                  <Auth />
+                </React.Suspense>
+              } 
+            />
+            <Route 
+              path="/login/member" 
+              element={
+                <React.Suspense fallback={<AuthLoader />}>
+                  <Auth />
+                </React.Suspense>
+              } 
+            />
             
             {/* Registration Routes - All handled by unified Auth component */}
-            <Route path="/register/admin" element={<Auth />} />
-            <Route path="/register/merchant" element={<Auth />} />
-            <Route path="/register/member" element={<Auth />} />
+            <Route 
+              path="/register/admin" 
+              element={
+                <React.Suspense fallback={<AuthLoader />}>
+                  <Auth />
+                </React.Suspense>
+              } 
+            />
+            <Route 
+              path="/register/merchant" 
+              element={
+                <React.Suspense fallback={<AuthLoader />}>
+                  <Auth />
+                </React.Suspense>
+              } 
+            />
+            <Route 
+              path="/register/member" 
+              element={
+                <React.Suspense fallback={<AuthLoader />}>
+                  <Auth />
+                </React.Suspense>
+              } 
+            />
             
             {/* Dashboard Routes */}
             <Route 
               path="/dashboard/admin" 
               element={
                 <ProtectedRoute requiredRole="admin">
-                  <DashboardAdmin />
+                  <React.Suspense fallback={<DashboardLoader />}>
+                    <DashboardAdmin />
+                  </React.Suspense>
                 </ProtectedRoute>
               } 
             />
@@ -282,7 +347,9 @@ const AppRoutes = () => {
               path="/dashboard/merchant" 
               element={
                 <ProtectedRoute requiredRole="merchant">
-                  <DashboardMerchant />
+                  <React.Suspense fallback={<DashboardLoader />}>
+                    <DashboardMerchant />
+                  </React.Suspense>
                 </ProtectedRoute>
               } 
             />
@@ -290,7 +357,9 @@ const AppRoutes = () => {
               path="/dashboard/member" 
               element={
                 <ProtectedRoute requiredRole="member">
-                  <DashboardMember />
+                  <React.Suspense fallback={<DashboardLoader />}>
+                    <DashboardMember />
+                  </React.Suspense>
                 </ProtectedRoute>
               } 
             />
