@@ -1,0 +1,31 @@
+[
+  {"id":"p1","customerId":"u1","merchantId":"m1","amount":150,"approved":true,"date":"2024-01-15","category":"Electronics"},
+  {"id":"p2","customerId":"u1","merchantId":"m2","amount":89,"approved":true,"date":"2024-01-20","category":"Clothing"},
+  {"id":"p3","customerId":"u1","merchantId":"m3","amount":45,"approved":false,"date":"2024-01-25","category":"Fashion"},
+  {"id":"p4","customerId":"u1","merchantId":"m4","amount":299,"approved":true,"date":"2024-02-01","category":"Electronics"},
+  {"id":"p5","customerId":"u1","merchantId":"m5","amount":25,"approved":true,"date":"2024-02-05","category":"Food"},
+  
+  {"id":"p6","customerId":"u2","merchantId":"m2","amount":39,"approved":true,"date":"2024-01-18","category":"Clothing"},
+  {"id":"p7","customerId":"u2","merchantId":"m1","amount":120,"approved":false,"date":"2024-01-22","category":"Electronics"},
+  {"id":"p8","customerId":"u2","merchantId":"m5","amount":18,"approved":true,"date":"2024-01-28","category":"Food"},
+  {"id":"p9","customerId":"u2","merchantId":"m3","amount":67,"approved":true,"date":"2024-02-03","category":"Fashion"},
+  {"id":"p10","customerId":"u2","merchantId":"m4","amount":189,"approved":true,"date":"2024-02-08","category":"Electronics"},
+  
+  {"id":"p11","customerId":"u3","merchantId":"m3","amount":78,"approved":true,"date":"2024-01-16","category":"Fashion"},
+  {"id":"p12","customerId":"u3","merchantId":"m4","amount":450,"approved":true,"date":"2024-01-21","category":"Electronics"},
+  {"id":"p13","customerId":"u3","merchantId":"m1","amount":95,"approved":false,"date":"2024-01-26","category":"Electronics"},
+  {"id":"p14","customerId":"u3","merchantId":"m5","amount":32,"approved":true,"date":"2024-01-30","category":"Food"},
+  {"id":"p15","customerId":"u3","merchantId":"m2","amount":156,"approved":true,"date":"2024-02-02","category":"Clothing"},
+  
+  {"id":"p16","customerId":"u4","merchantId":"m4","amount":320,"approved":true,"date":"2024-01-17","category":"Electronics"},
+  {"id":"p17","customerId":"u4","merchantId":"m3","amount":89,"approved":true,"date":"2024-01-23","category":"Fashion"},
+  {"id":"p18","customerId":"u4","merchantId":"m1","amount":67,"approved":true,"date":"2024-01-27","category":"Electronics"},
+  {"id":"p19","customerId":"u4","merchantId":"m5","amount":28,"approved":false,"date":"2024-02-01","category":"Food"},
+  {"id":"p20","customerId":"u4","merchantId":"m2","amount":134,"approved":true,"date":"2024-02-06","category":"Clothing"},
+  
+  {"id":"p21","customerId":"u5","merchantId":"m5","amount":22,"approved":true,"date":"2024-01-19","category":"Food"},
+  {"id":"p22","customerId":"u5","merchantId":"m2","amount":78,"approved":true,"date":"2024-01-24","category":"Clothing"},
+  {"id":"p23","customerId":"u5","merchantId":"m4","amount":189,"approved":false,"date":"2024-01-29","category":"Electronics"},
+  {"id":"p24","customerId":"u5","merchantId":"m1","amount":45,"approved":true,"date":"2024-02-04","category":"Electronics"},
+  {"id":"p25","customerId":"u5","merchantId":"m3","amount":56,"approved":true,"date":"2024-02-09","category":"Fashion"}
+]

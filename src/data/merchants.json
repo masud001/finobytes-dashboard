@@ -1,0 +1,7 @@
+[
+  {"id":"m1","storeName":"ShopOne","owner":"Mizan","email":"mizan@shopone.com","password":"shopone123"},
+  {"id":"m2","storeName":"SuperMart","owner":"Rafi","email":"rafi@supermart.com","password":"supermart123"},
+  {"id":"m3","storeName":"FashionHub","owner":"Sara","email":"sara@fashionhub.com","password":"fashion123"},
+  {"id":"m4","storeName":"TechStore","owner":"Ahmed","email":"ahmed@techstore.com","password":"tech123"},
+  {"id":"m5","storeName":"FoodCorner","owner":"Fatima","email":"fatima@foodcorner.com","password":"food123"}
+]

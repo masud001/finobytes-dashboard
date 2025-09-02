@@ -1,0 +1,7 @@
+[
+  {"id": "u1", "name": "Alice", "email": "alice@example.com", "phone":"+8801710000001", "password":"alice123", "points":120},
+  {"id": "u2", "name": "Bob", "email": "bob@example.com", "phone":"+8801710000002", "password":"bob123", "points":75},
+  {"id": "u3", "name": "Masud", "email": "masud@finobytes.com", "phone":"+8801709036155", "password":"123456", "points":150},
+  {"id": "u4", "name": "Charlie", "email": "charlie@member.com", "phone":"+8801710000003", "password":"charlie123", "points":200},
+  {"id": "u5", "name": "Diana", "email": "diana@user.com", "phone":"+8801710000004", "password":"diana123", "points":95}
+]

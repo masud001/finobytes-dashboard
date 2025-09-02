@@ -1,0 +1,4 @@
+[
+  {"id":"n1","text":"Purchase p1 awaiting approval","type":"approval"},
+  {"id":"n2","text":"Merchant m2 submitted store details","type":"info"}
+]
